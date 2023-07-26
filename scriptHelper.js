@@ -29,22 +29,24 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let pilotStatus = document.getElementById('pilotStatus');
-    let copilotStatus = document.getElementById('copilotStatus');
-    let fuelStatus = document.getElementById('fuelStatus');
-    let cargoStatus = document.getElementById('cargoStatus');
+    let pilotStatus = document.querySelector("[name='pilotName']");
+    let copilotStatus = document.querySelector("[name='copilotName']");
+    let fuelStatus = document.querySelector("[name='fuelLevel']");
+    let cargoStatus = document.querySelector("[name='cargoMass']");
     
     // Validation that fields are filled, is a number, not a number
-    if (validateInput(pilot) === `Empty` || validateInput(copilot) === `Empty` || fuelLevel === `Empty` || cargoLevel === `Empty`) {
+    if (validateInput(pilot) === `Empty` || validateInput(copilot) === `Empty` || validateInput(fuelLevel) === `Empty` || validateInput(cargoLevel) === `Empty`) {
      alert("All fields are required");
+    } else if (validateInput(fuelLevel) === `Not a Number` || validateInput(cargoLevel) === `Not a Number`) {
+        alert("Please enter numerical values for fuel and cargo status");
+    
     } else if (validateInput(pilot) === `Is a Number` || validateInput(copilot) === `Is a Number`) {
-     alert("Please enter alphabetical characters for pilot and copilot");
-    } else if (validateInput(fuelStatus) === `Not a Number` || validateInput(cargoStatus) === `Not a Number`) {
-     alert("Please enter numerical values for fuel and cargo status");
+        alert("Please enter alphabetical characters for pilot and copilot");
     } else {
-     pilotStatus.innerHTML = `Pilot ${pilot} is ready`;
-     copilotStatus.innerHTML = `Co-Pilot ${copilot} is ready`;
-     list.style.visibility = 'hidden';
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready`;
+        copilotStatus.innerHTML = `Co-Pilot ${copilot} is ready`;
+        list.style.visibility = 'hidden';
+ 
     }
 
    if(Number(fuelLevel) < 10000) {
@@ -63,7 +65,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     cargoStatus.innerHTML = `Cargo mass low enough for takeoff`;
     launchStatus.innerHTML = `Shuttle is ready for launch`;
     launchStatus.style.color = `rgb(65, 159, 106)`;
-   }
+   } 
+
+   
+
+   
 
 } 
 
