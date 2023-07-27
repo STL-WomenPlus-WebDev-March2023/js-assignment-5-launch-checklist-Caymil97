@@ -14,6 +14,7 @@ window.addEventListener("load", function() {
         let list = document.getElementById("faultyItems")
         if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
             alert("All fields are required!");
+       
             return;
         } else {
         //formSubmission to validate list
