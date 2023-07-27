@@ -5,14 +5,19 @@
 window.addEventListener("load", function() {
     let form = document.querySelector("form");
     form.addEventListener("submit", function(event){
-        event.preventDefault();
         //DOM
         let pilot = document.querySelector("input[name='pilotName']").value;
         let copilot = document.querySelector("input[name='copilotName']").value;
         let fuelLevel = document.querySelector("input[name='fuelLevel']").value;
         let cargoLevel = document.querySelector("input[name='cargoMass']").value;
         let list = document.getElementById("faultyItems")
-    
+        if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
+            event.preventDefault();
+
+            alert("All fields are required!");
+
+        }
+
         //formSubmission to validate list
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
 
