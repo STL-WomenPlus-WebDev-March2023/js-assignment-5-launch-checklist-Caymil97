@@ -20,18 +20,18 @@ window.addEventListener("load", function() {
         //formSubmission to validate list
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
         }
+        let listedPlanets;
+        myFetch().then(function (result) {
+            listedPlanets = result;
+            let planet = pickPlanet(listedPlanets);
+            let name = planet.name;
+            let diameter = planet.diameter;
+            let star = planet.star;
+            let distance = planet.distance;
+            let imageUrl = planet.image;
+            let moons = planet.moons;
+            addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
+        });
+    });
     });
 
-    let listedPlanets;
-    myFetch().then(function (result) {
-        listedPlanets = result;
-        let planet = pickPlanet(listedPlanets);
-        let name = planet.name;
-        let diameter = planet.diameter;
-        let star = planet.star;
-        let distance = planet.distance;
-        let imageUrl = planet.image;
-        let moons = planet.moons;
-        addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
-    });
-});
