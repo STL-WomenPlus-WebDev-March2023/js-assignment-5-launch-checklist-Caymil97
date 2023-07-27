@@ -14,13 +14,11 @@ window.addEventListener("load", function() {
         let list = document.getElementById("faultyItems")
         if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
             alert("All fields are required!");
-       
             return;
         } else {
         //formSubmission to validate list
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-        }
-        let listedPlanets;
+         let listedPlanets;
         myFetch().then(function (result) {
             listedPlanets = result;
             let planet = pickPlanet(listedPlanets);
@@ -32,6 +30,8 @@ window.addEventListener("load", function() {
             let moons = planet.moons;
             addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
         });
+     }
+
     });
-    });
+});
 
